@@ -1,4 +1,4 @@
 @import 'gallery';
-    
+
 @media only screen and (min-width: $mq-medium) { @import "gallery-medium"; }
 @media only screen and (min-width: $mq-large) { @import "gallery-large"; }

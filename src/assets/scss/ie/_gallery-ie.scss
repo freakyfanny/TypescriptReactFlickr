@@ -28,7 +28,7 @@
                 justify-content: center;
                 transform: scale(1.1);
                 z-index: 2;
-                label {                   
+                label {
                     position: absolute;
                     left: 0;
                     right: 0;
@@ -38,7 +38,7 @@
             label {
                 padding: 0 3vw 1vw 3vw;
                 position: absolute;
-                left: 0;                
+                left: 0;
                 top: 29vw;
                 z-index: -3;
                 height: 6vw;
@@ -57,7 +57,7 @@
 }
 
 
-@media only screen and (min-width: $mq-medium) { 
+@media only screen and (min-width: $mq-medium) {
 
 .tiles {
     .tile {
@@ -88,7 +88,7 @@
 @media only screen and (min-width: $mq-large) {
 .tiles {
     .tile {
-        margin: $spacing/2;        
+        margin: $spacing/2;
         width: 18vw;
         height: 18vw;
         .image {

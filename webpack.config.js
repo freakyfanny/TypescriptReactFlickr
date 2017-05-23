@@ -1,25 +1,16 @@
 const webpack = require('webpack')
 const path = require('path')
 const WebpackNotifierPlugin = require('webpack-notifier')
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
+const BUILD_DIR = path.resolve(__dirname, 'dist');
+const APP_DIR = path.resolve(__dirname, 'src');
 
-var ieCSSPlugin =  new ExtractTextPlugin({filename: 'assets/css/ie.css',
-    allChunks: true,
-    disable: false
+const extractSCSSPlugin = new ExtractTextPlugin({
+    filename: "[name].scss",
+    allChunks: true
 });
-
-var mainCSSPlugin = new ExtractTextPlugin({filename: 'assets/css/main.css',
-    allChunks: true,
-    disable: false
-});
-
-const sassLoaders = [
-    'css-loader',
-    'sass-loader?indentedSyntax=sass&sourceMap&includePaths[]=' + path.resolve(__dirname, './src')
-];
-
 
 const _root = path.resolve(__dirname, '..');
 
@@ -29,19 +20,13 @@ function root(args) {
 }
 
 module.exports = {
-    entry: [
-        'index.tsx'
-    ],
-    /*output: {
-    filename: 'app.js',
-    publicPath: 'dist',
-    path: path.resolve('dist')
-    },*/
+    entry: {
+        app: 'index.tsx'
+    },
     output: {
-        path: root('dist'),
+        filename: 'app.js',
         publicPath: 'dist',
-        filename: 'assets/[name].js',
-        chunkFilename: '[id].chunk.js'
+        path: BUILD_DIR
     },
     devServer: {
         port: 3000,
@@ -65,22 +50,40 @@ module.exports = {
 
     module: {
         rules: [
-            { test: /\.html$/, use: [ { loader: 'html-loader', options: { minimize: true } }], } ,
-            { test: /\.tsx?$/, loaders: ['babel-loader', 'ts-loader'], include: path.resolve('src') },
+            { test: /\.html$/, use: [ { loader: 'html-loader', options: { minimize: true, modules: true } }], include: APP_DIR } ,
+            { test: /\.tsx?$/, loaders: ['babel-loader', 'ts-loader'], include: APP_DIR },
             { test: /\.js$/, enforce: "pre", loader: "source-map-loader" },
-            {
-                test: /\ie.scss$/,
-                loader: ieCSSPlugin.extract({use : 'style-loader', fallback: sassLoaders.join('!')})
-            },
-            { test: /\.scss$/, exclude: /\ie.scss$/,
-                loader: mainCSSPlugin.extract({use: 'style-loader', fallback: sassLoaders.join('!')})
-            }
+            { test: /\.ie.(css|scss)$/, use: extractSCSSPlugin.extract({
+                use: [
+                    {
+                        loader: "css-loader",
+                        options: { modules: true, sourceMap: true }
+                    },
+                    {
+                        loader: "sass"
+                    }
+                ],
+                fallback: 'style-loader'
+            }), include: APP_DIR },
+            { test: /\.(css|scss)$/, use: extractSCSSPlugin.extract({
+                use: [
+                    {
+                        loader: "css-loader",
+                        options: { modules: true, sourceMap: true }
+                    },
+                    {
+                        loader: "sass"
+                    }
+                ],
+                fallback: 'style-loader'
+            }), include: APP_DIR }
         ]
     },
     externals: {
         "react": "React",
         "react-dom": "ReactDOM"
     },
+
     plugins: [
         new WebpackNotifierPlugin(),
         new OptimizeCssAssetsPlugin({
@@ -89,7 +92,6 @@ module.exports = {
             cssProcessorOptions: { discardComments: {removeAll: true } },
             canPrint: true
         }),
-        ieCSSPlugin,
-        mainCSSPlugin
+        extractSCSSPlugin,
     ]
 };
