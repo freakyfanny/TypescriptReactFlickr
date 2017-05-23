@@ -8,7 +8,7 @@ const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
 
 const extractSCSSPlugin = new ExtractTextPlugin({
-    filename: "[name].scss",
+    filename: 'scss/[name].scss',
     allChunks: true
 });
 
