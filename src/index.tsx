@@ -1,9 +1,17 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Hello } from "./components/Hello";
+import { Store, createStore } from 'redux';
+
+import { Gallery } from "./components/Gallery";
+import { Hello  } from "./components/Hello";
+import { FlickrPhotos } from "./components/FlickrPhotos";
+import { rootReducer } from './reducers/index';
+
+const initialState = {};
+const store: Store<any> = createStore(rootReducer, initialState);
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <Gallery welcome="Typescript and React gallery" photo={null} />,
     document.getElementById("example")
 );
