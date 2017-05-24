@@ -2,7 +2,9 @@
 // Global Imports
 // ==========================================================================
 
-@import "foundation/all";
-@import "header/all";
-@import "gallery/all";
-@import "spinner/all";
+:global {
+    @import "foundation/all";
+    @import "header/all";
+    @import "gallery/all";
+    @import "spinner/all";
+}

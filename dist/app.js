@@ -1453,7 +1453,7 @@ ReactDOM.render(React.createElement(Gallery_1.Gallery, { welcome: "Typescript an
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"header":"AUmFn0-b8Z2nHRAryeTo9","search":"_3WtbB-iytQgJ73BjHH-1i1","search__inputs":"_1fsXl3kHDFGB-f_R5i_am5","red":"_1UcC2HPS6b888bHvOrumuc","orange":"_28Lsdi66QkPz2m4eEB2KIM","yellow":"_1X18oFa31B5n5HiMKarRkW","green":"MhO37j0bVV2y9TMo79ctP","blue":"_122zfxfqTWIENwKTH49C3m","purple":"_15C-xYD-EdcEFv5gkH6Loh","black":"_1cGDEreH7I7-aKzHoBv0my","white":"_2haZzZ3K30uhRhhae84aH1","tiles":"_1828li37Rmd7okTmCh31ya","tile":"_3LQGurilAgYUL4bNYqiLrf","image":"_1CyAgAbnTM3hJIN6-pyUhc","title":"_2BsLmZHd1ZIaZp0HXQqgY4","spinner":"_165CTePUfxjENuzYhX1yoX","spinnerwheel":"_3qymZf2F8234CnytPRpPJ","rotateSpinner":"_1mdJiU-UkuD8iB9oZafZAO"};
+module.exports = {"rotateSpinner":"main__rotateSpinner___1mdJi","title":"main__title___2BsLm"};
 
 /***/ }),
 /* 22 */
