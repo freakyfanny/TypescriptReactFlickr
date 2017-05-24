@@ -69,6 +69,7 @@
   },
   "devDependencies": {
     "babel-loader": "^7.0.0",
+    "immutable": "^3.8.1",
     "redux": "^3.6.0",
     "source-map-loader": "^0.2.1",
     "static-html-webpack-plugin": "^1.2.0",
