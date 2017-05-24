@@ -8,7 +8,7 @@ const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
 
 const extractSCSSPlugin = new ExtractTextPlugin({
-    filename: 'scss/[name].scss',
+    filename: 'css/main.css',
     allChunks: true
 });
 
@@ -20,9 +20,10 @@ function root(args) {
 }
 
 module.exports = {
-    entry: {
-        app: 'index.tsx'
-    },
+    entry: [
+        'index.tsx',
+        'assets/scss/main.scss'
+    ],
     output: {
         filename: 'app.js',
         publicPath: 'dist',
@@ -41,7 +42,7 @@ module.exports = {
         },
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        extensions: ['*', '.ts', '.tsx', '.js', '.jsx'],
         modules: ['src', 'node_modules'],
     },
 
@@ -60,7 +61,7 @@ module.exports = {
                         options: { modules: true, sourceMap: true }
                     },
                     {
-                        loader: "sass"
+                        loader: "sass-loader"
                     }
                 ],
                 fallback: 'style-loader'
@@ -72,7 +73,7 @@ module.exports = {
                         options: { modules: true, sourceMap: true }
                     },
                     {
-                        loader: "sass"
+                        loader: "sass-loader"
                     }
                 ],
                 fallback: 'style-loader'
