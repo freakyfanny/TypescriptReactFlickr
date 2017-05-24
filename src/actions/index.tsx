@@ -14,7 +14,7 @@ const API_KEY = 'key=158f9fda1dd419dc28f2855346f605a3';
 const FORMAT = '&format=json&nojsoncallback=1';
 
 //get recent function returns the recent photos from flickrApi
-export function GetRecent() : GetRecentAction {
+export function getRecent() : GetRecentAction {
     let request = axios.get(ROOT_URL + RECENT + API_KEY + FORMAT);
 
     return {
@@ -23,7 +23,7 @@ export function GetRecent() : GetRecentAction {
     };
 }
 
-export function OtherAction() : OtherAction {
+export function otherAction() : OtherAction {
     return {
         type: OTHER_ACTION,
         payload: null

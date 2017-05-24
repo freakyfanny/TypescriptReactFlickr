@@ -1,23 +1,20 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { getRecent } from '../actions/index';
 
 const farmUrl = 'https://farm';
 const staticFlickrUrl = '.staticflickr.com/';
 
 export interface StateProps {
-    photo:any,
-    }
-
-export interface DispatchProps {
-
+    photo:any
 }
 
 
-export class FlickrPhotos extends React.Component<StateProps & DispatchProps , any> {
-    /*componentDidMount() {
-        this.props.getRecent();
+export class FlickrPhotos extends React.Component<StateProps , any> {
+    componentDidMount() {
+        getRecent();
     }
-*/
+
     render()  {
         return (<h4><b>ladida</b></h4>);
         /*let photoUrl = '';
@@ -35,8 +32,4 @@ const mapStateToProps = (state: any, ownProp? :any):StateProps  => ({
     photo: "Photo",
 });
 
-const mapDispatchToProps = (dispatch: any):DispatchProps => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(FlickrPhotos as any)
+export default connect(mapStateToProps, {getRecent})(FlickrPhotos as any)
