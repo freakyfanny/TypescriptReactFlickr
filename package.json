@@ -72,6 +72,7 @@
     "babel-loader": "^7.0.0",
     "immutable": "^3.8.1",
     "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
     "source-map-loader": "^0.2.1",
     "static-html-webpack-plugin": "^1.2.0",
     "ts-jest": "^20.0.4",

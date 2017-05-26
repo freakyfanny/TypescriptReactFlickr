@@ -1,34 +1,52 @@
 import * as React from "react";
-import { Hello } from "./Hello";
-import { FlickrPhotos } from './flickrPhotos';
 import * as redux from 'redux';
 import { connect } from 'react-redux';
+import { getRecent } from '../actions/index';
+import { FlickrImage } from './flickrImage';
+import { bindActionCreators } from 'redux';
 
-export interface StateProps {
-    welcome: string,
-    photo: any,
+export interface IGalleryState {
+    photos: FlickrImage[]
 }
 
-export interface DispatchProps {
+export interface IGalleryActions {
+    getRecent: () => any;
 }
 
-export class Gallery extends React.Component<StateProps & DispatchProps, any> {
+interface IGalleryLocalState {
+    welcome: string;
+}
+
+export default class Gallery extends React.Component<IGalleryState & IGalleryActions, IGalleryLocalState> {
+    constructor(props: IGalleryState & IGalleryActions) {
+        super(props);
+        this.state = {
+            welcome: "Flickr gallery with typescript, react and redux.",
+        };
+    }
+
+    componentDidMount() {
+        this.props.getRecent();
+    }
 
     renderButtons() {
         let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'black', 'white'];
         return colors.map(color => {
             return (
-                <button className={color} />
+                <button key={color} className={color} />
             );
         });
     }
 
     render()  {
+        const photos = this.props.photos.map((photo: FlickrImage) => {
+            <img src={photo.getLink()} key={photo.id} />
+        });
+
         return (
             <div>
-                <Hello compiler="TypeScript" framework="React" />
                 <div className="header">
-                    <h1>{this.props.welcome}</h1>
+                    <h1>{this.state.welcome}</h1>
                     <div className="search">
                         <div className="search__inputs">
                             <input type="text" name="search" id="search" placeholder="Filter on color" />
@@ -36,21 +54,8 @@ export class Gallery extends React.Component<StateProps & DispatchProps, any> {
                     </div>
                 </div>
                 {this.renderButtons()}
-                <FlickrPhotos photo={this.props.photo} />
+                {photos}
             </div>
         );
     }
 }
-
-const mapStateToProps = (state: any, ownProp? :any):StateProps  => ({
-    welcome: state.welcome,
-    photo: state.photo,
-});
-
-const mapDispatchToProps = (dispatch: any):DispatchProps => ({
-/*    GetRecent: () => {
-       dispatch({ type: 'GET_RECENT', payload: null });
-   }*/
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Gallery as any)
