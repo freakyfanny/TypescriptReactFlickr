@@ -9,8 +9,17 @@ export class FlickrImage {
     farm: number;
     title: string;
 
-    public getLink() : string {
+    constructor(id: string, owner: string, secret: string, server: string, farm: number, title: string) {
+        this.id = id;
+        this.owner = owner;
+        this.secret = secret;
+        this.server = server;
+        this.farm = farm;
+        this.title = title;
+    }
+
+    public getUrl() : string {
         return farmUrl + this.farm + staticFlickrUrl +
-                    this.server + '/' + this.id + '_' + this.secret + 'jpg';
+        this.server + '/' + this.id + '_' + this.secret + '.jpg';
     }
 }

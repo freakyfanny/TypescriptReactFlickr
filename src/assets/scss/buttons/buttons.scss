@@ -1,0 +1,121 @@
+.buttons {
+    margin: 20px auto;
+
+    h3 {
+        margin-bottom: 0px;
+        font-weight: bolder;
+    }
+}
+button {
+    -webkit-appearance:none;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 5px;
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    &:hover {
+        transition: all 0.3s ease;
+    }
+}
+
+.black {
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    &:hover {
+        background: rgba(0, 0, 0, 0.7);
+    }
+    &:focus {
+        background: rgba(0, 0, 0, 1);
+    }
+}
+
+
+.red {
+    border: none;
+    background: rgba(255, 105, 97, 0.8);
+    &:hover {
+        background: mix(rgba(255, 105, 97, 0.8), #fff, 80%);
+    }
+    &:focus {
+        background: rgba(255, 105, 97, 1);
+    }
+}
+
+.orange {
+    border: none;
+    background: rgba(255, 179, 71, 0.8);
+    &:hover {
+        background: mix(rgba(255, 179, 71, 0.8), #fff, 80%);
+    }
+    &:focus {
+        background: rgba(255, 179, 71, 1);
+    }
+}
+
+.yellow {
+    border: none;
+    background: rgba(253, 253, 150, 0.7);
+    &:hover {
+        background: mix(rgba(253, 253, 150, 0.8), #fff, 80%);
+    }
+    &:focus {
+        background: rgba(253, 253, 150, 1);
+    }
+}
+
+
+.green {
+    border: none;
+    background: rgba(119, 221, 119, 0.8);
+    &:hover {
+        background: mix(rgba(119, 221, 119, 0.8), #fff, 80%);
+    }
+    &:focus {
+        background: rgba(119, 221, 119, 1);
+    }
+}
+
+.blue {
+    border: none;
+    background: rgba(144, 168, 245, 0.8);
+    &:hover {
+        background: mix(rgba(174, 198, 245, 0.8), #fff, 80%);
+    }
+    &:focus {
+        background: rgba(174, 198, 245, 1);
+    }
+}
+
+.purple {
+    border: none;
+    background: rgba(177, 156, 217, 0.8);
+    &:hover {
+        background: mix(rgba(177, 156, 217, 0.8), #fff, 80%);
+    }
+    &:focus {
+        background: rgba(177, 156, 217, 1);
+    }
+}
+
+.pink {
+    border: none;
+    background: rgba(255, 195, 215, 0.8);
+    &:hover {
+        background: mix(rgba(255, 195, 215, 0.8), #fff, 80%);
+    }
+    &:focus {
+        background: rgba(255, 195, 215, 1);
+    }
+}
+
+.white {
+    border: none;
+    background: rgba(255, 255, 255, .5);
+    &:hover {
+        background: rgba(255, 255, 255, .8);
+    }
+    &:focus {
+        background: rgba(255, 255, 255, 1);
+    }
+}

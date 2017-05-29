@@ -1,6 +1,6 @@
 import { combineReducers, Reducer } from 'redux';
 import { FlickrImage } from '../components/FlickrImage';
-import { GET_RECENT, getRecent } from "../actions";
+import { GET_RECENT, getRecent, SET_PHOTOS} from "../actions";
 
 const initialState = {
     photos: []
@@ -13,7 +13,7 @@ const initAction = {
 
 function flickrGallery(state = [], action: any ) {
     switch (action.type) {
-        case GET_RECENT: {
+        case SET_PHOTOS: {
             console.log('in reducer ');
             console.log(action.payload);
 

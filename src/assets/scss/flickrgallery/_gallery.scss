@@ -14,8 +14,10 @@
         width: 32vw;
         height: 32vw;
         .image {
-            width: auto;
-            height: 32vw;
+            max-width: 100px;
+            max-height: 100px;
+            width: 100px;
+            height: 100px;
             background-color: transparent;
             background-position: center 25%;
             background-repeat: no-repeat;

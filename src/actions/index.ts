@@ -15,13 +15,12 @@ interface GalleryAction {
 
 /** action cretors */
 export const SET_PHOTOS: string = "SET_PHOTOS";
-export function setPhotos(request: string) {
-    const req = axios.get(request);
+export function setPhotos(action: GalleryAction) {
     console.log("in setphotos ")
-    console.log(req);
+    console.log(action.payload);
     return {
         type: SET_PHOTOS,
-        payload: req
+        payload: action.payload
     };
 }
 
@@ -30,7 +29,7 @@ export const GET_RECENT: string = "GET_RECENT";
 export function getRecent() {
     return <GalleryAction>(dispatch: Redux.Dispatch<GalleryAction>) => {
         axios.get(ROOT_URL + RECENT + API_KEY + FORMAT)
-    .then(response => dispatch({payload: response.data, type: SET_PHOTOS}));
+    .then(response => dispatch(setPhotos({type: SET_PHOTOS, payload: response})));
     };
 }
 
