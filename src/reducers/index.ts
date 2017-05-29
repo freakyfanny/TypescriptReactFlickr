@@ -1,16 +1,32 @@
 import { combineReducers, Reducer } from 'redux';
 import { FlickrImage } from '../components/FlickrImage';
-import { SET_PHOTOS } from "../actions";
+import { GET_RECENT, getRecent } from "../actions";
 
 const initialState = {
     photos: []
 };
 
-function flickrGallery(state = initialState, action: any) {
-    switch (action.type) {
-        case SET_PHOTOS:
-            return { ...state, photos: action.payload.data };
+const initAction = {
+    type: GET_RECENT,
+    payload: getRecent()
+}
 
+function flickrGallery(state = [], action: any ) {
+    switch (action.type) {
+        case GET_RECENT: {
+            console.log('in reducer ');
+            console.log(action.payload);
+
+        //return state.concat([action.payload.data]); //es5
+        return [ action.payload.data, ...state ]; //es6
+    }
+        /*return Object.assign({}, state, {
+            photos: [
+                ...state.photos,
+                action.payload,
+            ],
+        });
+    }*/
         default:
             return state;
     }
@@ -18,5 +34,5 @@ function flickrGallery(state = initialState, action: any) {
 
 //A reducer is a function that returns a piece of applications state, there can be many different reducers to reuturn different pieces of the apps state.
 export const rootReducer = combineReducers({
-  flickrGallery
+  photos: flickrGallery
 });

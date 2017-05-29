@@ -7,16 +7,20 @@ const API_KEY = 'key=158f9fda1dd419dc28f2855346f605a3';
 const FORMAT = '&format=json&nojsoncallback=1';
 exports.SET_PHOTOS = "SET_PHOTOS";
 function setPhotos(request) {
-    console.log(axios_1.default.get(request));
+    const req = axios_1.default.get(request);
+    console.log("in setphotos ");
+    console.log(req);
     return {
         type: exports.SET_PHOTOS,
-        payload: axios_1.default.get(request)
+        payload: req
     };
 }
 exports.setPhotos = setPhotos;
+exports.GET_RECENT = "GET_RECENT";
 function getRecent() {
     return (dispatch) => {
-        return dispatch(setPhotos(ROOT_URL + RECENT + API_KEY + FORMAT));
+        axios_1.default.get(ROOT_URL + RECENT + API_KEY + FORMAT)
+            .then(response => dispatch({ payload: response.data, type: exports.SET_PHOTOS }));
     };
 }
 exports.getRecent = getRecent;

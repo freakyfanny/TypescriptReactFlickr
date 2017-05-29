@@ -3,12 +3,10 @@ const React = require("react");
 class Gallery extends React.Component {
     constructor(props) {
         super(props);
+        this.props.getRecent();
         this.state = {
             welcome: "Flickr gallery with typescript, react and redux.",
         };
-    }
-    componentDidMount() {
-        this.props.getRecent();
     }
     renderButtons() {
         let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'black', 'white'];
@@ -17,7 +15,9 @@ class Gallery extends React.Component {
         });
     }
     render() {
-        const photos = this.props.photos.map((photo) => {
+        console.log('in gallery');
+        console.log(this.props.photos);
+        const photos = this.props.getRecent().map((photo) => {
             React.createElement("img", { src: photo.getLink(), key: photo.id });
         });
         return (React.createElement("div", null,

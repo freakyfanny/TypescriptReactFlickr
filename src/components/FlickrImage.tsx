@@ -9,7 +9,7 @@ export class FlickrImage {
     farm: number;
     title: string;
 
-    getLink() : string {
+    public getLink() : string {
         return farmUrl + this.farm + staticFlickrUrl +
                     this.server + '/' + this.id + '_' + this.secret + 'jpg';
     }

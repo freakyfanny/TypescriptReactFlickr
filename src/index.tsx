@@ -12,17 +12,19 @@ const store = createStore(
     applyMiddleware(thunk),
 );
 // Log the initial state
+console.log("Log initialstate ");
 console.log(store.getState());
 
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
 const unsubscribe = store.subscribe(() => {
+    console.log("Subscription log ");
     console.log(store.getState());
 });
 
 store.dispatch(Actions.getRecent());
 // unsubscribe from store updates
-unsubscribe();
+//unsubscribe();
 
 const mount: Element | null = document.querySelector("#app");
 

@@ -2,8 +2,7 @@ import * as React from "react";
 import * as redux from 'redux';
 import { connect } from 'react-redux';
 import { getRecent } from '../actions/index';
-import { FlickrImage } from './flickrImage';
-import { bindActionCreators } from 'redux';
+import { FlickrImage } from './FlickrImage';
 
 export interface IGalleryState {
     photos: FlickrImage[]
@@ -20,13 +19,10 @@ interface IGalleryLocalState {
 export default class Gallery extends React.Component<IGalleryState & IGalleryActions, IGalleryLocalState> {
     constructor(props: IGalleryState & IGalleryActions) {
         super(props);
+        this.props.getRecent();
         this.state = {
             welcome: "Flickr gallery with typescript, react and redux.",
         };
-    }
-
-    componentDidMount() {
-        this.props.getRecent();
     }
 
     renderButtons() {
@@ -39,7 +35,9 @@ export default class Gallery extends React.Component<IGalleryState & IGalleryAct
     }
 
     render()  {
-        const photos = this.props.photos.map((photo: FlickrImage) => {
+        console.log('in gallery');
+        console.log(this.props.photos);
+        const photos = this.props.getRecent().map((photo: FlickrImage) => {
             <img src={photo.getLink()} key={photo.id} />
         });
 

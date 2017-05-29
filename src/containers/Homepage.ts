@@ -16,7 +16,7 @@ import { IGalleryActions, IGalleryState } from "../components/Gallery";
  */
 const mapStateToProps = (state: any): IGalleryState => {
     return {
-        photos: state.data.photos,
+        photos: state.photos,
         // Notice how we've removed 'randomJunk' from the initial state; KEEP PROPS LIGHT!! :)
     };
 };

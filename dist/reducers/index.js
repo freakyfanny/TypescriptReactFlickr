@@ -1,26 +1,25 @@
 "use strict";
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
 const redux_1 = require("redux");
 const actions_1 = require("../actions");
 const initialState = {
     photos: []
 };
-function flickrGallery(state = initialState, action) {
+const initAction = {
+    type: actions_1.GET_RECENT,
+    payload: actions_1.getRecent()
+};
+function flickrGallery(state = [], action) {
     switch (action.type) {
-        case actions_1.SET_PHOTOS:
-            return __assign({}, state, { photos: action.payload.data });
+        case actions_1.GET_RECENT: {
+            console.log('in reducer ');
+            console.log(action.payload);
+            return [action.payload.data, ...state];
+        }
         default:
             return state;
     }
 }
 exports.rootReducer = redux_1.combineReducers({
-    flickrGallery
+    photos: flickrGallery
 });
 //# sourceMappingURL=index.js.map
