@@ -1,9 +1,8 @@
-$width: 12vw;
+$width: 14vw;
 
 .photos {
-    margin: 0px auto 0px auto;
-    width: 100%;
-    //padding: 0px 20px;
+    padding: 0;
+    margin: -9vw auto 0 auto;
 
     .photo_row_even {
         &:nth-child(7),
@@ -24,7 +23,7 @@ $width: 12vw;
     .photo_row_even,
     .photo_row_odd {
         display: inline-block;
-        margin: 0 auto -14vw auto;
+        margin: 0 auto -18vw auto;
         overflow: hidden;
     }
 
@@ -110,25 +109,3 @@ $width: 12vw;
 
 
 }
-
-/*.crop {
-display: inline-block;
-width: 300px;
-height: 300px;
-margin: 0px 20px;
--webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-img {
-width: auto;
-height: 400px;
-margin: 0px;
-
-&:hover {
-opacity: 0.8;
-filter: alpha(opacity=80);
--webkit-filter: brightness(125%);
-filter: brightness(125%);
-transition: all 0.3s ease;
-}
-}
-}*/

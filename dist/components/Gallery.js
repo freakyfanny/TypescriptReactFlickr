@@ -18,45 +18,40 @@ class Gallery extends React.Component {
             return (React.createElement("button", { key: color, className: color }));
         });
     }
+    renderPhoto(flickrImg) {
+        let style = {
+            background: 'url(' + flickrImg.getUrl() + ') center no-repeat'
+        };
+        return (React.createElement("div", { className: "center", key: 'hexa' + flickrImg.id },
+            React.createElement("div", { className: "photo_hexa", key: 'outer' + flickrImg.id },
+                React.createElement("div", { className: "photo_hexa_outer", key: 'inner' + flickrImg.id },
+                    React.createElement("div", { className: "photo_hexa_inner", style: style, key: flickrImg.id })))));
+    }
     renderPhotos() {
         console.log('in gallery');
         console.log(this.props.photos);
         if (this.props.photos.length > 0) {
             let counter = 0;
-            let hasBeenEven = false;
+            let isEven = false;
             let photos = this.props.photos[0].photos.photo;
             return photos.map((photo) => {
                 counter++;
                 let flickrImg = new FlickrImage_1.FlickrImage(photo.id, photo.owner, photo.secret, photo.server, photo.farm, photo.title);
                 let photoClasses = ['photo'];
-                if (counter % 6) {
-                    hasBeenEven = true;
+                if (counter % 12 == 0 || counter >= 13) {
+                    isEven = false;
+                    counter = 0;
                 }
-                if (counter >= 6) {
-                    photoClasses.push('photo_row_even');
-                    if (counter % 12 == 0) {
-                        counter = 0;
-                        hasBeenEven = false;
-                    }
+                else if (counter % 7 == 0) {
+                    isEven = true;
                 }
-                else {
+                if (!isEven) {
                     photoClasses.push('photo_row_odd');
-                }
-                let style = {
-                    background: 'url(' + flickrImg.getUrl() + ') center no-repeat'
-                };
-                if (hasBeenEven) {
-                    return (React.createElement("div", { className: photoClasses.join(' '), key: 'odd' + flickrImg.id },
-                        React.createElement("div", { className: "center", key: 'hexa' + flickrImg.id },
-                            React.createElement("div", { className: "photo_hexa", key: 'outer' + flickrImg.id },
-                                React.createElement("div", { className: "photo_hexa_outer", key: 'inner' + flickrImg.id },
-                                    React.createElement("div", { className: "photo_hexa_inner", style: style, key: flickrImg.id }))))));
+                    return (React.createElement("div", { className: photoClasses.join(' '), key: 'odd' + flickrImg.id }, this.renderPhoto(flickrImg)));
                 }
                 else {
-                    return (React.createElement("div", { className: "center", key: 'hexa' + flickrImg.id },
-                        React.createElement("div", { className: "photo_hexa", key: 'outer' + flickrImg.id },
-                            React.createElement("div", { className: "photo_hexa_outer", key: 'inner' + flickrImg.id },
-                                React.createElement("div", { className: "photo_hexa_inner", style: style, key: flickrImg.id })))));
+                    photoClasses.push('photo_row_even');
+                    return (React.createElement("div", { className: photoClasses.join(' '), key: 'even' + flickrImg.id }, this.renderPhoto(flickrImg)));
                 }
             });
         }

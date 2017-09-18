@@ -1,4 +1,4 @@
 @import "photos";
 
-//@media only screen and (min-width: $mq-medium) { @import "header-medium"; }
-//@media only screen and (min-width: $mq-large) { @import "header-large"; }
+@media only screen and (min-width: $mq-medium) { @import "photos-medium"; }
+@media only screen and (min-width: $mq-large) { @import "photos-large"; }

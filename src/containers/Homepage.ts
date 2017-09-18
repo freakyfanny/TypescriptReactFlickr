@@ -30,6 +30,9 @@ const mapDispatchToProps = <T>(dispatch: Redux.Dispatch<T>): IGalleryActions => 
     return {
         getRecent: () => {
             dispatch(Actions.getRecent());
+        },
+        getPhotoByColor: () => {
+            dispatch(Actions.getPhotoByColor());
         }
     };
 };
