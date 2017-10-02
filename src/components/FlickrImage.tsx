@@ -18,7 +18,7 @@ export class FlickrImage {
         this.title = title;
     }
 
-    public getUrl() : string {
+    public getUrl(): string {
         return farmUrl + this.farm + staticFlickrUrl +
         this.server + '/' + this.id + '_' + this.secret + '.jpg';
     }

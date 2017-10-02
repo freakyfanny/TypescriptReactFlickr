@@ -11,20 +11,22 @@ const store = createStore(
     rootReducer,
     applyMiddleware(thunk),
 );
+
 // Log the initial state
+// tslint:disable-next-line:no-console
 console.log('Log initialstate');
 console.log(store.getState());
 
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
 const unsubscribe = store.subscribe(() => {
+    // tslint:disable-next-line:no-console
     console.log('Subscription log');
+    // tslint:disable-next-line:no-console
     console.log(store.getState());
 });
 
 store.dispatch(Actions.getRecent());
-// unsubscribe from store updates
-//unsubscribe();
 
 const mount: Element | null = document.querySelector('#app');
 
@@ -36,5 +38,6 @@ if (mount !== null) {
         mount,
     );
 } else {
+    // tslint:disable-next-line:no-console
     console.error(`#app not found in document`);
 }

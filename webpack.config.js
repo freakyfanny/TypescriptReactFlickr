@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const WebpackNotifierPlugin = require('webpack-notifier')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const autoprefixer = require('autoprefixer')
 
 const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
@@ -43,42 +44,44 @@ module.exports = {
     },
 
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+    devtool: 'source-map',
 
     module: {
         rules: [
             { test: /\.html$/, use: [ { loader: 'html-loader', options: { minimize: true, modules: true } }], include: APP_DIR } ,
             { test: /\.tsx?$/, loaders: ['babel-loader', 'ts-loader'], include: APP_DIR },
-            { test: /\.js$/, enforce: "pre", loader: "source-map-loader" },
+            { test: /\.js$/, enforce: 'pre', loader: 'source-map-loader' },
             { test: /\.scss$/, use: extractSCSSPlugin.extract({
                 use: [
                     {
-                        loader: "css-loader",
+                        loader: 'css-loader',
                         options: { modules: true, sourceMap: true , localIdentName: '[name]__[local]___[hash:base64:5]' }
                     },
                     {
-                        loader: "sass-loader"
+                        loader: 'postcss-loader'
+                    },
+                    {
+                        loader: 'sass-loader'
                     }
                 ]
-            }), include: APP_DIR },
-            { test: /\.§css$/, use: [
-                {
-                    loader: "css-loader",
-                    options: { modules: true, sourceMap: true , localIdentName: '[name]__[local]___[hash:base64:5]' }
-                },
-                {
-                    loader: "postcss-loader"
-                }
-            ], include: APP_DIR }
+            }), include: APP_DIR }
         ]
     },
     externals: {
-        "react": "React",
-        "react-dom": "ReactDOM"
+        'react': 'React',
+        'react-dom': 'ReactDOM'
     },
 
     plugins: [
         new WebpackNotifierPlugin(),
         extractSCSSPlugin,
+        new webpack.LoaderOptionsPlugin({
+            options: {
+              postcss: [
+                autoprefixer(),
+              ]
+             }
+         })
         ]
 };
+
