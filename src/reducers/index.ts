@@ -1,6 +1,6 @@
 import { combineReducers, Reducer } from 'redux';
 import { FlickrImage } from '../components/FlickrImage';
-import { GET_RECENT, getRecent, SET_PHOTOS} from "../actions";
+import { GET_RECENT, getRecent, SET_PHOTOS} from '../actions';
 
 const initialState = {
     photos: []

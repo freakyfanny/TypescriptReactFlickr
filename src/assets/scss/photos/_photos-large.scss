@@ -1,20 +1,17 @@
-$width: 13vw;
+$width: 14vw;
+$seven: 7;
+$eighteen: 18;
 
 .photos {
     margin: -8.5vw auto 0 auto;
 
     .photo_row_even {
-        &:nth-child(7),
-        &:nth-child(18),
-        &:nth-child(29),
-        &:nth-child(40){
-            padding-left: $width*0.58;
+        &:nth-child(#{$seven}),
+        &:nth-child(#{$eleven}n + #{$eighteen}){
+            padding-left: 0.58*$width;
         }
-        &:nth-child(11),
-        &:nth-child(22),
-        &:nth-child(33),
-        &:nth-child(44){
-            padding-right: $width*0.58;
+        &:nth-child(#{$eleven}n){
+            padding-right: 0.58*$width;
         }
     }
 
@@ -31,79 +28,66 @@ $width: 13vw;
             float: left;
             margin: 20px 10px;
             width: $width;
+        }
 
+        .photo_hexa {
+            transform: rotate(120deg);
+            cursor: pointer;
+            height: $width*2;
+            overflow: hidden;
+            visibility: hidden;
+            width: $width;
+        }
 
-            .photo_hexa {
-                -moz-transform: rotate(120deg);
-                -ms-transform: rotate(120deg);
-                -webkit-transform: rotate(120deg);
-                transform: rotate(120deg);
-                cursor: pointer;
-                height: $width*2;
-                overflow: hidden;
-                visibility: hidden;
-                width: $width;
+        .photo_hexa_outer {
+            transform: rotate(-60deg);
+            height: 100%;
+            overflow: hidden;
+            width: 100%;
+        }
 
+        .photo_hexa_inner {
+            transform: rotate(-60deg);
+            height: 100%;
+            /*@include background-size(($width + ($width * .20)) ($width + ($width * .20)));
+            background-position: 50%;*/
+            position: relative;
+            visibility: visible;
+            width: 100%;
+        }
 
-                .photo_hexa_outer {
-                    -moz-transform: rotate(-60deg);
-                    -ms-transform: rotate(-60deg);
-                    -webkit-transform: rotate(-60deg);
-                    transform: rotate(-60deg);
-                    height: 100%;
-                    overflow: hidden;
-                    width: 100%;
+        .photo_hexa_desc {
+            color: white;
+            font-family: 'Lato', sans-serif;
+            font-size: 1.5em;
+            font-weight: 300;
+            height: $width*2;
+            line-height: 1.5em;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            visibility: visible;
+            width: $width;
 
-                    .photo_hexa_inner {
-                        -moz-transform: rotate(-60deg);
-                        -ms-transform: rotate(-60deg);
-                        -webkit-transform: rotate(-60deg);
-                        transform: rotate(-60deg);
-                        height: 100%;
-                        /*@include background-size(($width + ($width * .20)) ($width + ($width * .20)));
-                        background-position: 50%;*/
-                        position: relative;
-                        visibility: visible;
-                        width: 100%;
-
-                        .photo_hexa_desc {
-                            color: white;
-                            font-family: 'Lato', sans-serif;
-                            font-size: 1.5em;
-                            font-weight: 300;
-                            height: $width*2;
-                            line-height: 1.5em;
-                            position: absolute;
-                            text-align: center;
-                            text-transform: uppercase;
-                            visibility: visible;
-                            width: $width;
-
-                            & .base {
-                                background: rgba(230, 0, 98, 0.75);
-                            }
-                            & .one {
-                                background: rgba(252, 171, 55, 0.75);
-                            }
-                            & .two {
-                                background: rgba(169, 160, 50, 0.75);
-                            }
-                            & .three {
-                                background: rgba(83, 70, 54, 0.75);
-                            }
-                            & h2 {
-                                margin: ($width - ($width / 4)) 20px 0 20px;
-  }
-                            & p {
-                                font-size: .5em;
-                                text-transform: lowercase;
-                            }
-                        }
-                    }
-                }
+            & .base {
+                background: rgba(230, 0, 98, 0.75);
+            }
+            & .one {
+                background: rgba(252, 171, 55, 0.75);
+            }
+            & .two {
+                background: rgba(169, 160, 50, 0.75);
+            }
+            & .three {
+                background: rgba(83, 70, 54, 0.75);
+            }
+            & h2 {
+                margin: ($width - ($width / 4)) 20px 0 20px;
+            }
+            & p {
+                font-size: .5em;
+                text-transform: lowercase;
             }
         }
     }
-
-
 }

@@ -50,19 +50,7 @@ module.exports = {
             { test: /\.html$/, use: [ { loader: 'html-loader', options: { minimize: true, modules: true } }], include: APP_DIR } ,
             { test: /\.tsx?$/, loaders: ['babel-loader', 'ts-loader'], include: APP_DIR },
             { test: /\.js$/, enforce: "pre", loader: "source-map-loader" },
-            { test: /\.ie.(css|scss)$/, use: extractSCSSPlugin.extract({
-                use: [
-                    {
-                        loader: "css-loader",
-                        options: { modules: true, sourceMap: true , localIdentName: '[name]__[local]___[hash:base64:5]'}
-                    },
-                    {
-                        loader: "sass-loader"
-                    }
-                ],
-                fallback: 'style-loader'
-            }), include: APP_DIR },
-            { test: /\.(css|scss)$/, use: extractSCSSPlugin.extract({
+            { test: /\.scss$/, use: extractSCSSPlugin.extract({
                 use: [
                     {
                         loader: "css-loader",
@@ -72,7 +60,16 @@ module.exports = {
                         loader: "sass-loader"
                     }
                 ]
-            }), include: APP_DIR }
+            }), include: APP_DIR },
+            { test: /\.§css$/, use: [
+                {
+                    loader: "css-loader",
+                    options: { modules: true, sourceMap: true , localIdentName: '[name]__[local]___[hash:base64:5]' }
+                },
+                {
+                    loader: "postcss-loader"
+                }
+            ], include: APP_DIR }
         ]
     },
     externals: {
@@ -83,5 +80,5 @@ module.exports = {
     plugins: [
         new WebpackNotifierPlugin(),
         extractSCSSPlugin,
-    ]
+        ]
 };

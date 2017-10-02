@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --colors",
     "build": "webpack --config webpack.config.js",
     "test": "jest",
-    "cleanse": "rimraf ./dist && mkdir dist && echo 'Cleaned dist.'"
+    "cleaner": "rimraf ./dist && mkdir dist && echo 'Cleaned dist.'"
   },
   "repository": {
     "type": "git",
@@ -50,7 +50,6 @@
     "jest": "^19.0.0",
     "node-sass": "^4.5.3",
     "optimize-css-assets-webpack-plugin": "^1.3.2",
-    "postcss-loader": "^2.0.5",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
     "react-axios": "0.0.9",
@@ -70,8 +69,10 @@
     "webpack-notifier": "^1.5.0"
   },
   "devDependencies": {
+    "autoprefixer": "^7.1.4",
     "babel-loader": "^7.0.0",
     "immutable": "^3.8.1",
+    "postcss-loader": "^2.0.6",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "source-map-loader": "^0.2.1",

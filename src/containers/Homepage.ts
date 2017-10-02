@@ -1,9 +1,9 @@
-import * as React from "react";
-import { connect } from "react-redux";
-import * as Redux from "react-redux";
-import * as Actions from "../actions";
-import Gallery from "../components/Gallery";
-import { IGalleryActions, IGalleryState } from "../components/Gallery";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import * as Redux from 'react-redux';
+import * as Actions from '../actions';
+import Gallery from '../components/Gallery';
+import { IGalleryActions, IGalleryState } from '../components/Gallery';
 
 /**
 * You only need 2 functions for a container: mapStateToProps and mapDispatchToProps
